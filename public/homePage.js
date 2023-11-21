@@ -9,7 +9,7 @@ function funcLogout(){
     }
    });
 }
-let logout  = new logoutButton();
+let logout  = new LogoutButton();
 logout.action = funcLogout;
 
 ApiConnector.current((response)=> {
@@ -19,7 +19,7 @@ ApiConnector.current((response)=> {
 let course = new RatesBoard();
 let requestCourses = function() {
     ApiConnector.getStocks((response) => {
-        if (response.succes){
+        if (response.success){
             course.clearTable();
             course.fillTable(response.data);
         }
@@ -28,9 +28,9 @@ let requestCourses = function() {
 requestCourses();
 setInterval(requestCourses, 6000);
 
-let money = new moneyManager();
+let money = new MoneyManager();
 function showMessage (response){
-    if (response.succes){
+    if (response.success){
         ProfileWidget.showProfile(response.data);
         money.setMessage(true, String("Операция прошла успешно"));
     } else {
@@ -73,7 +73,7 @@ ApiConnector.getFavorites((response) => {
 favorites.addUserCallback = function(data){
     let userName = data.name
     ApiConnector.addUserToFavorites(data, (response) => {
-        if (response.succes){
+        if (response.success){
             fillTable(response);
             favorites.setMessage(true, String(`${userName} успешно добавлен`));
         } else {
