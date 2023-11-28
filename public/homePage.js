@@ -50,7 +50,7 @@ money.conversionMoneyCallback = function(data){
     });
 };
 
-money.sendMoneyCallback = function(){
+money.sendMoneyCallback = function(data){
     ApiConnector.transferMoney(data, (response) => {
         console.log (response);
         console.log (data);
@@ -84,7 +84,7 @@ favorites.addUserCallback = function(data){
 
 favorites.removeUserCallback = function(data){
     let userId = data;
-    ApiConnector.addUserToFavorites(data, (response) => {
+    ApiConnector.removeUserCallbackUserToFavorites(data, (response) => {
         if (response.success){
             fillTable(response);
             favorites.setMessage(true, String(`адрес с id ${userId} успешно удален`));
